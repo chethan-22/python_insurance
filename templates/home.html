@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+   <div class="row">
+   <div class="col-md-12"><h6>Hello..{{ request.user }}</h6></div>
+   <div class="col-md-12 p p-4">
+       <a class="btn btn-info" href="{% url 'insur' %}">Create Insurance</a>
+       <a class="btn btn-warning" href="{% url 'insdata' %}">Total Insurances</a>
+       <a class="btn btn-info" href="{% url 'insmem' %}">Insured Members</a>
+   </div>
+   </div>
+
+{% endblock %}

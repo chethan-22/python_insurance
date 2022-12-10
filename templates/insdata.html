@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="row">
+<div class="col-md-12"><h5>Records</h5></div>
+<div class="col-md-12">
+    {% if memsdata %}
+        <table class="table">
+        <tr class="bg-secondary"><td>Name</td><td>Mobile</td><td>Email</td><td>DOB</td><td></td></tr>
+        {% for x in memsdata %}
+            <form method="post" action=""><tr><td>{{ x.name }}</td><td>{{ x.mobile }}<input hidden name="id" type="text" value="{{ x.cust_id }}"></td><td>{{ x.email }}{% csrf_token %}</td><td>{{ x.dob }}</td><td>
+                <input class="btn btn-link" value="delete" type="submit"></td></tr></form>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+</div>
+
+    {% if insdata %}
+        <div class="col-md-12">
+        <table class="table">
+        <tr class="bg-secondary"><td>Customer ID</td><td>Name</td><td>Mobile</td><td>Email</td><td>DOB</td><td>Address</td><td>Insurance ID</td><td>Insurance Type</td><td>Start Date</td><td>End Date</td><td></td></tr>
+        {% for a in insdata %}
+            <form method="post" action=""><tr><td>{{ a.cust_id }}</td><td>{{ a.name }}</td><td>{{ a.mobile }}{% csrf_token %}</td><td>{{ a.email }}<input name="custid" hidden value="{{ a.cust_id }}" type="text"></td><td>{{ a.dob }}</td><td>{{ a.custaddress.address }}</td><td>in00{{ a.insurances.insurance_id }}</td><td>{{ a.insurances.insurance_type }}</td><td>{{ a.insurances.start_date }}</td><td>{{ a.insurances.end_date }}</td><td>
+            <input class="btn btn-link" type="submit" value="delete"></td></tr></form>
+        {% endfor %}
+        </table>
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

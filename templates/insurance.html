@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+      <div class="row">
+           <div class="col-md-4"></div>
+           <div class="col-md-4">
+               <br>
+               <form method="post" action="">
+                   <h5 class="text-secondary">New Insurance Form</h5>
+                   {% csrf_token %}
+                   {{ form2 | crispy }}
+                   {{ form3 | crispy }}
+                    {{ form1|crispy }}
+                   <p><b>Note:</b> Enter date in 'MM/DD/YYYY' format only</p>
+                   <input type="submit" class="btn btn-danger m mt-2"><br><br>
+                   <a class="btn btn-success" href="/home/">Back</a>
+               </form>
+               <br><br>
+           </div>
+       </div>
+
+    <script>
+    document.querySelector('#div_id_cust_id').style.display='none';
+    document.querySelector('#div_id_cust').style.display='none';
+    document.querySelector('#div_id_agnt').style.display='none';
+    document.querySelector('#div_id_cust_key').style.display='none';
+
+    </script>
+
+{% endblock %}

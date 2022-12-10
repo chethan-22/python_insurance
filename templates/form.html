@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+    <div class="row">
+    <div class="col-md-4">
+        <center><h6 class="text-secondary">Agent Entry</h6></center>
+    <form method="post" action="">
+    {% csrf_token %}
+    {{ form1 | crispy}}
+        <br>
+        <input class="btn btn-danger" type="submit"><br><br>
+        {% if not af %}
+            <p>Signup as a <a href="{% url 'register' %}"><b>Agent</b></a></p>
+        {% endif %}
+    </form>
+    </div>
+    </div>
+
+{% endblock %}
